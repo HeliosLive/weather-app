@@ -59,4 +59,12 @@ npm install
 
 twitter bootstrap for responsiveness. (npm i bootstrap and then add style url to style.scss file)
 ignite ui for material component UI. (ng add igniteui-angular)
-ngx-toaster for action alerts.(npm i ngx-toastr then add style file into angular.json and styles array.. then create custom style file into assets folder and make your own customization then add that file into style.scss again)
+ngx-toastr for action alerts.(npm i ngx-toastr then add style file into angular.json and styles array.. then create custom style file into assets folder and make your own customization then add that file into style.scss again)
+
+## Directive test added
+
+## base service for parsing result and requesting to endpoints..
+
+## resource service for simple crud operations services..
+
+## to prevent ivy ui module errors add ngss to script inside of package.json

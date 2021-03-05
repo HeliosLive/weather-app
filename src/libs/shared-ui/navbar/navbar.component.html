@@ -1,0 +1,14 @@
+<div class="sample-column">
+  <igx-navbar
+    [title]="title"
+    actionButtonIcon="menu"
+    [isActionButtonVisible]="true"
+  >
+    <igx-icon>search</igx-icon>
+    <igx-icon (click)="toogleLogged()">account_circle</igx-icon>
+
+    <igx-navbar-action>
+      <igx-icon class="customIcon" routerLink="home">home</igx-icon>
+    </igx-navbar-action>
+  </igx-navbar>
+</div>

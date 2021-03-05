@@ -1,0 +1,24 @@
+<div class="content-wrap">
+  <igx-nav-drawer id="navigation" #drawer [isOpen]="true">
+    <ng-template igxDrawer>
+      <nav class="sidebar">
+        <span
+          *ngFor="let item of menuItems"
+          routerLink="{{ item.url }}"
+          [attr.data-sectionvalue]="item.name"
+          [attr.data-cy]="item.name"
+          routerLinkActive
+          #rla="routerLinkActive"
+          igxDrawerItem
+          igxRipple
+          [active]="rla.isActive"
+        >
+          <igx-icon fontSet="material">{{ item.icon }}</igx-icon>
+          <div class="sidebar__item">
+            <span>{{ item.name }} </span>
+          </div>
+        </span>
+      </nav>
+    </ng-template>
+  </igx-nav-drawer>
+</div>
