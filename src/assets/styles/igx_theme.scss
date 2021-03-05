@@ -1,0 +1,10 @@
+@import "~igniteui-angular/lib/core/styles/themes/index";
+
+$fleek-color-palette: igx-palette(
+  $primary: $primary-color,
+  $secondary: $secondary-color,
+  $error: red,
+);
+
+@include igx-core();
+@include igx-theme($fleek-color-palette);

@@ -1,0 +1,10 @@
+@import "~igniteui-angular/lib/core/styles/themes/index";
+
+$custom-navbar: igx-navbar-theme(
+  $text-color: $text-color,
+  $background: $navbar-background-color,
+  $idle-icon-color: $primary-color,
+  $hover-icon-color: gray,
+);
+
+@include igx-navbar($custom-navbar);
