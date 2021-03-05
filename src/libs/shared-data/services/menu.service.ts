@@ -9,6 +9,10 @@ export class MenuService {
   // Due to there is no permission control, only aim is return all possible menu items.
   private data$: BehaviorSubject<IMenu[]> = new BehaviorSubject(null as any);
   data = this.data$.asObservable();
+  private collapse$: BehaviorSubject<boolean> = new BehaviorSubject(
+    false as any
+  );
+  collapse = this.collapse$.asObservable();
 
   menuItems = [
     {
@@ -26,5 +30,9 @@ export class MenuService {
 
   loadMenuItems() {
     this.data$.next(this.menuItems);
+  }
+
+  collapseMenu(event: boolean) {
+    this.collapse$.next(event);
   }
 }

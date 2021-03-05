@@ -1,5 +1,15 @@
 <div class="content-wrap">
-  <igx-nav-drawer id="navigation" #drawer [isOpen]="true">
+  <main>
+    <span
+      style="cursor: pointer"
+      igxButton="icon"
+      igxToggleAction="navigation"
+      (click)="drawer.toggle(); collapseMenu()"
+    >
+      <igx-icon family="material">menu</igx-icon>
+    </span>
+  </main>
+  <igx-nav-drawer id="navigation" #drawer [isOpen]="isMenuOpen">
     <ng-template igxDrawer>
       <nav class="sidebar">
         <span
@@ -12,6 +22,7 @@
           igxDrawerItem
           igxRipple
           [active]="rla.isActive"
+          (click)="drawer.toggle(); collapseMenu()"
         >
           <igx-icon fontSet="material">{{ item.icon }}</igx-icon>
           <div class="sidebar__item">

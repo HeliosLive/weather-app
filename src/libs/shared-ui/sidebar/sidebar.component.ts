@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IMenu } from 'src/libs/interfaces/menu.interface';
 
 @Component({
@@ -7,8 +7,17 @@ import { IMenu } from 'src/libs/interfaces/menu.interface';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
+  isMenuOpen = false;
   @Input() menuItems: IMenu[] = [];
+  @Output() menuCollapse: EventEmitter<any> = new EventEmitter();
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.menuCollapse.emit(this.isMenuOpen);
+  }
+
+  collapseMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+    this.menuCollapse.emit(this.isMenuOpen);
+  }
 }

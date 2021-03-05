@@ -6,14 +6,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  @Input() title: any;
-  @Output() buttonClick: EventEmitter<any> = new EventEmitter();
+  @Input() icon = 'home';
+  @Input() title = 'Weather App';
+  @Output() accountClicked: EventEmitter<any> = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}
 
-  toogleLogged(event?: any) {
-    console.log('clicked to navbar');
-    // this.buttonClick.emit(event);
+  toogleAccount(event?: any) {
+    console.log('clicked to account');
+    // this.accountClicked.emit(event);
   }
 }

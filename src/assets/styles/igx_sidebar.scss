@@ -1,0 +1,8 @@
+@import "~igniteui-angular/lib/core/styles/themes/index";
+
+$custom-sidebar: igx-navdrawer-theme(
+  $background: $sidebar-background-color,
+  $item-active-background: $sidebar-item-background-color,
+);
+
+@include igx-navdrawer($custom-sidebar);
