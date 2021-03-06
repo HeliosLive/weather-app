@@ -1,4 +1,4 @@
-<div class="rows d-flex justify-content-around" style="position: relative">
+<div class="d-flex justify-content-around" style="position: relative">
   <div
     [ngClass]="
       (menuCollapse$ | async)
@@ -21,8 +21,9 @@
           <app-card
             *ngIf="city?.weather | async as cityWeather"
             [weatherData]="cityWeather"
+            btnText="Click for Hourly Detail"
             [imgUrl]="city?.imageUrl || '../../../assets/images/earth.jpg'"
-            (detailClicked)="getCityDetail($event)"
+            (cardSubmit)="getCityDetail($event)"
           ></app-card>
         </div>
       </igx-slide>
@@ -47,9 +48,11 @@
   </div>
 
   <ng-template #skeletonWeather>
-    <img
-      src="../../assets/images/hourly-weather.svg"
-      alt="city weather detail"
-    />
+    <div style="margin: 2vh 0 0 2vh">
+      <img
+        src="../../assets/images/hourly-weather.svg"
+        alt="city weather detail"
+      />
+    </div>
   </ng-template>
 </div>

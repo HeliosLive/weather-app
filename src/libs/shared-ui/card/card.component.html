@@ -30,7 +30,7 @@
           <img class="large-image" src="../../../assets/images/wind.svg" />
           <p>
             {{ weatherData?.wind?.speed }}
-            <span>km/s</span>
+            <span>km/h</span>
           </p>
         </div>
         <div>
@@ -59,7 +59,7 @@
       igxRipple
       (click)="cityDetailEmit(weatherData?.coord!, weatherData?.name!)"
     >
-      Click for Hourly Detail
+      {{ btnText }}
     </button>
   </igx-card>
 </div>

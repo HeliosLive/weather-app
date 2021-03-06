@@ -53,8 +53,14 @@ export class CityService {
     this.data$.next(this.cities);
   }
 
-  addCity(city: ICity) {
+  addCity(city: ICity): boolean {
     city.id = this.cities.length + 1;
-    this.cities.push(city);
+    const cityIndex = this.cities.findIndex((el) => el.name === city.name);
+    if (cityIndex === -1) {
+      this.cities.push(city);
+      return true;
+    } else {
+      return false;
+    }
   }
 }

@@ -1,0 +1,33 @@
+<div
+  class="d-flex justify-content-center"
+  [ngClass]="
+    (menuCollapse$ | async) ? 'search-container' : 'search-container__collapsed'
+  "
+>
+  <div
+    [ngClass]="
+      (menuCollapse$ | async) ? 'search-content' : 'search-content__collapsed'
+    "
+  >
+    <app-search
+      inputText="Type a City Name.."
+      (submitForm)="citySearch($event)"
+    ></app-search>
+  </div>
+</div>
+
+<div
+  class="d-flex justify-content-center"
+  [ngClass]="
+    (menuCollapse$ | async) ? 'search-container' : 'search-container__collapsed'
+  "
+  style="margin-top: 3rem"
+>
+  <app-card
+    *ngIf="cityData?.weather | async as cityWeather"
+    btnText="Add this City"
+    [weatherData]="cityWeather"
+    imgUrl="../../../assets/images/earth.jpg"
+    (cardSubmit)="addCity($event)"
+  ></app-card>
+</div>
