@@ -1,0 +1,58 @@
+<div *ngIf="forecastData; else skeleton" class="sample-column card-wrapper">
+  <igx-card>
+    <igx-card-media height="300px" width="55vw">
+      <img [src]="imageUrl" />
+    </igx-card-media>
+    <igx-card-header style="text-align: center">
+      <h2 igxCardHeaderTitle>{{ forecastData?.timezone }}</h2>
+    </igx-card-header>
+
+    <igx-card-content class="d-flex justify-content-around">
+      <div
+        *ngFor="let hourlyForecast of forecastData?.hourly!.slice(0, 5)"
+        style="text-align: center"
+      >
+        <div>
+          <h4 style="display: flex">
+            <igx-icon style="transform: scale(0.8)">access_time</igx-icon>
+            {{ hourlyForecast?.dt | timestampDateFormat }}
+          </h4>
+        </div>
+        <div>
+          <img class="large-image" src="../../../assets/images/wind.svg" />
+          <p>
+            {{ hourlyForecast?.wind_speed }}
+            <span>km/s</span>
+          </p>
+        </div>
+        <div>
+          <img
+            *ngIf="
+              hourlyForecast?.temp | temperatureConverter: 'C' as tempCelcius
+            "
+            class="large-image"
+            [src]="
+              tempCelcius >= 6
+                ? '../../../assets/images/sunny (1).svg'
+                : '../../../assets/images/snowflake.svg'
+            "
+          />
+          <p>
+            {{ hourlyForecast?.temp | temperatureConverter: "C" }}
+            <span>°C</span>
+          </p>
+        </div>
+      </div>
+    </igx-card-content>
+    <!-- 
+  <button
+        igxButton="raised"
+        igxRipple
+        (click)="detailClicked.emit(forecastData?.coord)"
+      >
+        Read more
+      </button> -->
+  </igx-card>
+</div>
+
+<ng-template #skeleton> skeleton text... </ng-template>

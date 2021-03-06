@@ -1,1 +1,67 @@
-<p>card works!</p>
+<div *ngIf="weatherData; else skeleton" class="sample-column card-wrapper">
+  <igx-card>
+    <igx-card-media height="180px" width="250px">
+      <img [src]="imgUrl" />
+    </igx-card-media>
+    <igx-card-header style="text-align: center">
+      <h2 igxCardHeaderTitle>{{ weatherData?.name }}</h2>
+      <h5
+        style="margin-top: -0.7rem"
+        *ngFor="let weather of weatherData?.weather"
+        igxCardHeaderSubtitle
+      >
+        ( {{ weather?.description }} )
+      </h5>
+      <h5 igxCardHeaderSubtitle>
+        <img class="small-image" src="../../../assets/images/sunrise.svg" />
+        <span>
+          {{ weatherData?.sys?.sunrise | timestampDateFormat }}
+        </span>
+        <img class="small-image" src="../../../assets/images/sunset.svg" />
+        <span>
+          {{ weatherData?.sys?.sunset | timestampDateFormat }}
+        </span>
+      </h5>
+    </igx-card-header>
+
+    <igx-card-content>
+      <div style="text-align: center" class="d-flex justify-content-around">
+        <div>
+          <img class="large-image" src="../../../assets/images/wind.svg" />
+          <p>
+            {{ weatherData?.wind?.speed }}
+            <span>km/s</span>
+          </p>
+        </div>
+        <div>
+          <img
+            *ngIf="
+              weatherData?.main?.temp | temperatureConverter: 'C' as tempCelcius
+            "
+            class="large-image"
+            [src]="
+              tempCelcius >= 6
+                ? '../../../assets/images/sunny (1).svg'
+                : '../../../assets/images/snowflake.svg'
+            "
+          />
+          <p>
+            {{ weatherData?.main?.temp | temperatureConverter: "C" }}
+            <span>°C</span>
+          </p>
+        </div>
+      </div>
+    </igx-card-content>
+
+    <button
+      *ngIf="weatherData?.coord && weatherData?.name"
+      igxButton="raised"
+      igxRipple
+      (click)="cityDetailEmit(weatherData?.coord!, weatherData?.name!)"
+    >
+      Click for Hourly Detail
+    </button>
+  </igx-card>
+</div>
+
+<ng-template #skeleton> add city template.. </ng-template>
