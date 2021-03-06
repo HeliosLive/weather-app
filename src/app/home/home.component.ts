@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   cityData$: Observable<ICity[]>;
   hourlyForecastData$: Observable<IForecast> = of(null as any);
   menuCollapse$: Observable<boolean>;
+  selectedCityName = '';
   selectedCityImageUrl = '';
   citySubs!: Subscription;
   constructor(
@@ -68,6 +69,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       selectedCityIndex > -1
         ? environment.wide_images[selectedCityIndex].imageUrl
         : environment.wide_images[defaultCityIndex].imageUrl;
+    this.selectedCityName = event?.name;
     this.forecastService.setLat(event?.coord?.lat);
     this.forecastService.setLon(event?.coord?.lon);
     this.forecastService.setExclude('minutely');

@@ -9,6 +9,7 @@ import { IForecast } from 'src/libs/interfaces/forecast.interface';
 export class DailyCardComponent implements OnInit {
   @Input() forecastData!: IForecast;
   @Input() imageUrl!: string;
+  @Input() cityName!: string;
 
   constructor() {}
 

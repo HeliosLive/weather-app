@@ -9,7 +9,7 @@
     <igx-carousel
       #carousel
       [navigation]="false"
-      [pause]="false"
+      [pause]="true"
       animationType="fade"
       [interval]="4000"
       [gesturesSupport]="false"
@@ -44,6 +44,7 @@
     <app-daily-card
       [forecastData]="hourlyForecastData"
       [imageUrl]="selectedCityImageUrl"
+      [cityName]="selectedCityName"
     ></app-daily-card>
   </div>
 

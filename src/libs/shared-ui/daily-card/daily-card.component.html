@@ -1,10 +1,11 @@
 <div *ngIf="forecastData; else skeleton" class="sample-column card-wrapper">
   <igx-card>
-    <igx-card-media height="300px" width="55vw">
+    <igx-card-media height="260px" width="55vw">
       <img [src]="imageUrl" />
     </igx-card-media>
     <igx-card-header style="text-align: center">
-      <h2 igxCardHeaderTitle>{{ forecastData?.timezone }}</h2>
+      <h2 igxCardHeaderTitle>{{ cityName }}</h2>
+      <h5 igxCardHeaderSubtitle>Timezone : {{ forecastData?.timezone }}</h5>
     </igx-card-header>
 
     <igx-card-content class="d-flex justify-content-around">
