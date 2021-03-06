@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
 
+## Demo
+
+In order to make this app user friendly and eye appealing a few images have been used. If you find it slow please forgive us :)
+[Demo](https://europe-weather-app.herokuapp.com/) is running on heroku right now. It is a free account thus, after 30min inactiveness it goes to sleep. Please wait for initial run.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
