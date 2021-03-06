@@ -144,4 +144,9 @@ export class ResourceService<T extends Resource> extends BaseService {
       },
     });
   }
+
+  // data reset..
+  resetData(): void {
+    this.data$.next(null as any);
+  }
 }

@@ -17,7 +17,8 @@ interface ICityDetail {
 export class CardComponent implements OnInit {
   @Input() weatherData!: IWeather;
   @Input() imgUrl!: string;
-  @Output() detailClicked: EventEmitter<ICityDetail> = new EventEmitter();
+  @Input() btnText = 'click';
+  @Output() cardSubmit: EventEmitter<ICityDetail> = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {
@@ -27,6 +28,6 @@ export class CardComponent implements OnInit {
   cityDetailEmit(coord: { lat: number; lon: number }, name: string) {
     const val = { coord, name };
 
-    this.detailClicked.emit(val);
+    this.cardSubmit.emit(val);
   }
 }

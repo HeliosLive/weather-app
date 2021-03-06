@@ -15,7 +15,9 @@ const routes: Routes = [
   {
     path: 'search',
     loadChildren: () =>
-      import('./search/search.module').then((mod) => mod.SearchModule),
+      import('./city-search/city-search.module').then(
+        (mod) => mod.CitySearchModule
+      ),
   },
   {
     path: '**',

@@ -1,0 +1,17 @@
+<form [formGroup]="createForm">
+  <igx-input-group type="search">
+    <input
+      #input1
+      igxInput
+      [placeholder]="inputText"
+      formControlName="name"
+      width="300px"
+    />
+    <igx-prefix>
+      <igx-icon>search</igx-icon>
+    </igx-prefix>
+    <igx-suffix *ngIf="input1.value.length > 0" (click)="input1.value = ''">
+      <igx-icon>clear</igx-icon>
+    </igx-suffix>
+  </igx-input-group>
+</form>
