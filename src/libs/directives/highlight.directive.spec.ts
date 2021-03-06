@@ -10,9 +10,10 @@ import { HighlightDirective } from './highlight.directive';
   selector: 'app-test-container',
   template: `
     <div>
-      <span id="red" appHighlight>red text</span>
-      <span id="green" [appHighlight]="'green'">green text</span>
-      <span id="no">no color</span>
+      <p id="yellow" appHighlight>yellow text</p>
+      <p id="green" appHighlight color="green">green text</p>
+      <p id="red" appHighlight color="red">red text</p>
+      <p id="no">no color</p>
     </div>
   `,
 })
@@ -49,30 +50,45 @@ describe('HighlightDirective', () => {
   });
 
   it('should set background-color to empty when mouse leaves with directive without arguments', () => {
-    const targetElement = element.querySelector('#red') as HTMLSpanElement;
+    const targetElement = element.querySelector(
+      '#yellow'
+    ) as HTMLParagraphElement;
 
     targetElement.dispatchEvent(mouseEvents.leave);
     expect(targetElement.style.backgroundColor).toEqual('');
   });
 
   it('should set background-color to empty when mouse leaves with directive with arguments', () => {
-    const targetElement = element.querySelector('#green') as HTMLSpanElement;
+    const targetElement = element.querySelector(
+      '#green'
+    ) as HTMLParagraphElement;
 
     targetElement.dispatchEvent(mouseEvents.leave);
     expect(targetElement.style.backgroundColor).toEqual('');
   });
 
-  it('should set background-color red with no args passed', () => {
-    const targetElement = element.querySelector('#red') as HTMLSpanElement;
+  it('should set background-color yellow with no args passed', () => {
+    const targetElement = element.querySelector(
+      '#yellow'
+    ) as HTMLParagraphElement;
 
     targetElement.dispatchEvent(mouseEvents.enter);
-    expect(targetElement.style.backgroundColor).toEqual('red');
+    expect(targetElement.style.backgroundColor).toEqual('yellow');
   });
 
   it('should set background-color green when passing green parameter', () => {
-    const targetElement = element.querySelector('#green') as HTMLSpanElement;
+    const targetElement = element.querySelector(
+      '#green'
+    ) as HTMLParagraphElement;
 
     targetElement.dispatchEvent(mouseEvents.enter);
     expect(targetElement.style.backgroundColor).toEqual('green');
+  });
+
+  it('should set background-color red when passing green parameter', () => {
+    const targetElement = element.querySelector('#red') as HTMLParagraphElement;
+
+    targetElement.dispatchEvent(mouseEvents.enter);
+    expect(targetElement.style.backgroundColor).toEqual('red');
   });
 });

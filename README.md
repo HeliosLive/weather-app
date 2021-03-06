@@ -80,7 +80,7 @@ You can create custom toastr style file into assets folder and make your own cus
 # End User Guide
 
 After you open the website you will face with home page directly and see a carousel includes 5 cities data.
-It's an autoplay slider after a couple of seconds slide changes. However you can click any bullet to change slides.
+It's an autoplay slider after a couple of seconds slide changes (if you hover the card autoplay will pause). However you can click any bullet to change slides.
 Inside of this carousel you will see city data card and a button bottom of the card which makes you see hourly selected city forecast.
 
 In addition, there is a search tab as well. If you click the hamburger menu button at top left you can open the menu.
@@ -94,7 +94,7 @@ Basically, I've used lazy loading and feature modules to create a smooth Archite
 We have 2 pages home and Search. Each component has their own module and route mechanism.
 I've seperated app and libs at first. My goal was seperate reusable components/directives/pipes/services etc from main smart components.
 Then I draw a few templates for pages so I realized I need to use same component types more than one page.
-That's why I created shared-ui folder and split big components into small pieces.. After that import into other lazy loading feature modules. To make it reusable and generic.
+That's why I created shared-ui folder and split big components into small pieces.. After that import into other lazy loading feature modules. To make it reusable and generic. Components structure based on service's behaviourSubjects, output and input instead of ngRx pattern because it's a small application we don't need to.
 
 I've added endpoint urls into environment files to access and use safely/easily.
 
@@ -103,4 +103,7 @@ Also considering simple crud operations It'd be better to create one resource se
 
 After network calls api returns data differently so I've created 2 pipes to use everywhere and those are timestamp-date-format and Kelvin to Celcius temperature-converter pipes.
 
-## Directive test added
+## Custom directive unit test
+
+Create a custom directive only job is highlighted the tag when you hover it. You can add color or default yellow.
+![Demo](https://res.cloudinary.com/dlth9ls92/image/upload/v1615066708/directive-unit-test.gif)
