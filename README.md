@@ -53,7 +53,8 @@ Install node packages (npm install)
 ## Deploy on heroku
 
 Go to [Heroku](https://id.heroku.com/login) and after signed in create a new personal app but don't forget! App environment has to based on nodejs.
-Install express & path into the app and make sure added to your package.json file.
+Install enhanced-resolve#3.3.0(-dev) & express & path into the app and make sure added to your package.json file.
+Then, add "postinstall" & "heroku-postbuild" scripts into your package.json file and fill those like this project.
 Create a server.js file to be able to run your app on server. (you can copy paste from ours but don't forget to change the app name)
 After everything is done you can connect your github app repository to your heroku application to able to build after every commit into specific branch. (If your repo isn't on github you can use heroku cli instead of github)
 
