@@ -7,18 +7,39 @@ import {
   IgxIconModule,
   IgxNavbarModule,
   IgxNavigationDrawerModule,
+  IgxButtonModule,
+  IgxCardModule,
+  IgxRippleModule,
 } from 'igniteui-angular';
 import { RouterModule } from '@angular/router';
+import { TemperatureConverterPipe } from '../pipes/temperature-converter.pipe';
+import { TimestampDateFormatPipe } from '../pipes/timestamp-date-format.pipe';
+import { DailyCardComponent } from './daily-card/daily-card.component';
 
 @NgModule({
-  declarations: [CardComponent, NavbarComponent, SidebarComponent],
+  declarations: [
+    CardComponent,
+    NavbarComponent,
+    SidebarComponent,
+    DailyCardComponent,
+    TemperatureConverterPipe,
+    TimestampDateFormatPipe,
+  ],
   imports: [
     CommonModule,
     RouterModule,
     IgxIconModule,
     IgxNavbarModule,
+    IgxButtonModule,
+    IgxCardModule,
+    IgxRippleModule,
     IgxNavigationDrawerModule,
   ],
-  exports: [CardComponent, NavbarComponent, SidebarComponent],
+  exports: [
+    CardComponent,
+    DailyCardComponent,
+    NavbarComponent,
+    SidebarComponent,
+  ],
 })
 export class SharedUIModule {}

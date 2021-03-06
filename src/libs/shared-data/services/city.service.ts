@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 import { ICity } from 'src/libs/interfaces/city.interface';
 
 @Injectable({
@@ -15,36 +15,35 @@ export class CityService {
       name: 'Paris',
       country: 'France',
       iso_code: 250,
+      imageUrl: '../../../assets/images/paris.jpg',
     },
     {
       id: 2,
       name: 'Amsterdam',
       country: 'Netherlands',
       iso_code: 528,
+      imageUrl: '../../../assets/images/amsterdam.jpg',
     },
     {
       id: 3,
       name: 'Berlin',
       country: 'Germany',
       iso_code: 276,
+      imageUrl: '../../../assets/images/berlin.jpg',
     },
     {
       id: 4,
-      name: 'Madrid',
-      country: 'Spain',
-      iso_code: 724,
+      name: 'London',
+      country: 'UK',
+      iso_code: 826,
+      imageUrl: '../../../assets/images/london.jpg',
     },
     {
       id: 5,
-      name: 'Roma',
-      country: 'Italy',
-      iso_code: 380,
-    },
-    {
-      id: 6,
       name: 'Istanbul',
       country: 'Turkey',
       iso_code: 792,
+      imageUrl: '../../../assets/images/istanbul.jpg',
     },
   ];
 

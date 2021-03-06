@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CityService } from './services/city.service';
 import { WeatherService } from './services/weather.service';
 import { MenuService } from './services/menu.service';
+import { ForecastService } from './services/forecast.service';
 
 @NgModule({
   imports: [CommonModule, HttpClientModule],
@@ -28,6 +29,7 @@ export class ServicesModule {
       providers: [
         CityService,
         WeatherService,
+        ForecastService,
         MenuService,
         { provide: 'environment', useValue: environment },
       ],

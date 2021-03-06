@@ -1,0 +1,75 @@
+.carousel-container {
+  height: 80vh;
+  transition: all, 2s;
+  margin-top: calc(4.5vh);
+  //(PC)
+  @media screen and (min-width: 1001px) and (max-width: 2000px) {
+    padding-left: 6vw;
+  }
+  //(iPad)
+  @media screen and (min-width: 701px) and (max-width: 1000px) {
+    padding-left: 2vw;
+  }
+
+  &__collapsed {
+    height: 80vh;
+    transition: all, 2s;
+    margin-top: calc(4.5vh);
+    //(PC)
+    @media screen and (min-width: 1001px) and (max-width: 2000px) {
+      padding-left: calc(16vw);
+    }
+    //(iPad)
+    @media screen and (min-width: 701px) and (max-width: 1000px) {
+      padding-left: calc(7vw);
+    }
+  }
+}
+
+.slider-container {
+  height: 80vh;
+  width: 55vw;
+  transition: all, 2s;
+  margin-top: calc(7.5vh);
+  // //(PC)
+  // @media screen and (min-width: 1001px) and (max-width: 2000px) {
+  //   padding-left: 20vw;
+  // }
+  // //(iPad)
+  // @media screen and (min-width: 701px) and (max-width: 1000px) {
+  //   padding-left: 15vw;
+  // }
+
+  &__collapsed {
+    height: 80vh;
+    width: 55vw;
+    transition: all, 2s;
+    margin-top: calc(7.5vh);
+    // //(PC)
+    // @media screen and (min-width: 1001px) and (max-width: 2000px) {
+    //   padding-left: calc(46vw - 10vw);
+    // }
+    // //(iPad)
+    // @media screen and (min-width: 701px) and (max-width: 1000px) {
+    //   padding-left: calc(36vw - 10vw);
+    // }
+  }
+}
+
+:host ::ng-deep {
+  .igx-nav-dot {
+    background: black;
+    box-shadow: none;
+    width: 15px;
+    height: 15px;
+  }
+
+  .igx-slide {
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    width: unset;
+  }
+}
