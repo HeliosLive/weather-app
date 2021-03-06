@@ -54,9 +54,11 @@ Install node packages (npm install)
 
 Go to [Heroku](https://id.heroku.com/login) and after signed in create a new personal app but don't forget! App environment has to based on nodejs.
 Install enhanced-resolve#3.3.0(-dev) & express & path into the app and make sure added to your package.json file.
-Then, add "postinstall" & "heroku-postbuild" scripts into your package.json file and fill those like this project.
-Create a server.js file to be able to run your app on server. (you can copy paste from ours but don't forget to change the app name)
-After everything is done you can connect your github app repository to your heroku application to able to build after every commit into specific branch. (If your repo isn't on github you can use heroku cli instead of github)
+Then, add "start:prod": "node server.js" script into your package.json file and create a Procfile which includes `web: npm run start:prod`
+text.
+Later, create a server.js file to be able to run your app on server. (you can copy paste from ours but don't forget to change the app name)
+After these steps your app runs via express on heroku nodejs environment.
+When everything is done you can connect your github app repository to your heroku application to able to build after every commit into specific branch. (If your repo isn't on github you can use heroku cli instead of github)
 
 ## tools that been used
 
