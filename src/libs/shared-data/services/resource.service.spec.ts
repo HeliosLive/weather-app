@@ -14,6 +14,7 @@ describe('ResourceService', () => {
     service = TestBed.inject(ResourceService);
   });
 
+  // This is a Base service we already tested smart services dont need to control and edit @Injectable() type
   // it('should be created', () => {
   //   expect(service).toBeTruthy();
   // });

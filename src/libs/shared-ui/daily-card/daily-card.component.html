@@ -1,7 +1,7 @@
 <div *ngIf="forecastData; else skeleton" class="sample-column card-wrapper">
   <igx-card>
     <igx-card-media height="260px" width="55vw">
-      <img [src]="imageUrl" />
+      <img class="cardVirtualImage" [src]="imgUrl" />
     </igx-card-media>
     <igx-card-header style="text-align: center">
       <h2 igxCardHeaderTitle>{{ cityName }}</h2>
@@ -10,6 +10,7 @@
 
     <igx-card-content class="d-flex justify-content-around">
       <div
+        class="cardForecastList"
         *ngFor="let hourlyForecast of forecastData?.hourly!.slice(0, 5)"
         style="text-align: center"
       >

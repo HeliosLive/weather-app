@@ -1,13 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ICityDetail } from 'src/libs/interfaces/city-detail.interface';
 import { IWeather } from 'src/libs/interfaces/weather.interface';
-
-interface ICityDetail {
-  name: string;
-  coord: {
-    lat: number;
-    lon: number;
-  };
-}
 
 @Component({
   selector: 'app-card',
