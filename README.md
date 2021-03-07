@@ -120,8 +120,7 @@ We have 2 pages home and Search. Each component has their own module and route m
 
 Create a custom directive only job is **highlighted the tag** when you hover it. You can add color or default yellow.
 
-> `ng test --include="src/libs/directives/highlight.directive.spec.ts"`
-> ![Demo](https://res.cloudinary.com/dlth9ls92/image/upload/v1615066708/directive-unit-test.gif)
+> `ng test --include="src/libs/directives/highlight.directive.spec.ts"` > ![Demo](https://res.cloudinary.com/dlth9ls92/image/upload/v1615066708/directive-unit-test.gif)
 
 ## Custom pipe unit test
 
@@ -254,8 +253,6 @@ Create a service this time really does **api calls** with open weather api. But 
 This type of components have only **one job** which is If component receives correct format data it shows them.
 You can see a couple of input and output data check.
 
-component.ts ,
-
 ```javascript
 export class CardComponent implements OnInit {
   @Input() weatherData!: IWeather;
@@ -269,8 +266,6 @@ export class CardComponent implements OnInit {
 }
 
 ```
-
-component.spec.ts ,
 
 ```javascript
 
