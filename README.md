@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
 
+### Api
+
+I've used [Open Weather Api](https://openweathermap.org/) to make forecast api calls.
+
 ## Demo
 
 In order to make this app user friendly and eye appealing a few images have been used. If you find it slow please forgive us :)
@@ -71,7 +75,7 @@ Twitter bootstrap for responsive structure. (npm i bootstrap then add style url 
 You don't need to implement all css and js files because we are using ignite-ui for component styles. Just add grid css.
 
 Ignite ui for material component UI. (ng add igniteui-angular) [Ignite UI](https://www.infragistics.com/products/ignite-ui-angular)
-Ignite team seperated all components by module thus everytime you try to use some component don't forget to add the module
+team seperated all components by module thus everytime you try to use some component don't forget to add the module
 (e.g. to be able to use igx-icon tag first you need to import IgxIconModule into your feature module)
 
 ngx-toastr for action alerts. (npm i ngx-toastr then add style file url into styles array inside of angular.json)
@@ -106,4 +110,127 @@ After network calls api returns data differently so I've created 2 pipes to use 
 ## Custom directive unit test
 
 Create a custom directive only job is highlighted the tag when you hover it. You can add color or default yellow.
+(In order to run only this file : ng test --include="src/libs/directives/highlight.directive.spec.ts")
 ![Demo](https://res.cloudinary.com/dlth9ls92/image/upload/v1615066708/directive-unit-test.gif)
+
+## Custom pipe unit test
+
+We have two custom pipes for testing and their jobs are: First, converting temperature between Kelvin and Celcius. Second, convert date from timestamp to 'hh:mm'.
+(In order to run only this file : ng test --include="src/libs/pipes/temperature-converter.pipe.spec.ts")
+
+```javascript
+describe("TemperatureConverterPipe", () => {
+  // This pipe is a pure, stateless function so no need for BeforeEach
+  const pipe = new TemperatureConverterPipe();
+
+  it('transforms "Kelvin" to "Celcius"', () => {
+    const celciusValue = 22;
+    const kelvinValue = Math.round(celciusValue + 273.15);
+    expect(pipe.transform(celciusValue, "K")).toEqual(kelvinValue);
+  });
+
+  it('transforms "Celcius" to "Kelvin"', () => {
+    const kelvinValue = 290;
+    const celciusValue = Math.round(kelvinValue - 273.15);
+    expect(pipe.transform(kelvinValue, "C")).toEqual(celciusValue);
+  });
+});
+```
+
+(In order to run only this file : ng test --include="src/libs/pipes/timestamp-date-format.pipe.spec.ts")
+
+```javascript
+describe("TimestampDateFormatPipe", () => {
+  // This pipe is a pure, stateless function so no need for BeforeEach
+  const pipe = new TimestampDateFormatPipe();
+
+  it('transforms date from timestamp to "hh:mm"', () => {
+    const timeStampDate = 1615122000;
+    const hourDate = "14:00";
+    expect(pipe.transform(timeStampDate)).toBe(hourDate);
+  });
+});
+```
+
+## Service unit test
+
+Create a service only job is load the cities function and add a new city.
+Add a couple of simple return value and subscriptions as like below.
+(In order to run only this file : ng test --include="src/libs/shared-data/services/city.service.spec.ts")
+
+```javascript
+it("It should return 5 element length long mock cities array data after loaded", () => {
+  service.loadCities();
+  service.data.subscribe((res) => {
+    expect(res.length).toEqual(5);
+  });
+});
+
+it("It should return true after adding a new city into mock cities array", () => {
+  service.loadCities();
+  const result = service.addCity({ name: "Prag" });
+  expect(result).toBe(true);
+});
+
+it("It should return false after adding existing city into mock cities array", () => {
+  service.loadCities();
+  const result = service.addCity({ name: "Istanbul" });
+  expect(result).toBe(false);
+});
+```
+
+Create a service this time really does api calls with open weather api. But it's not just a simple call service this is an extend service from another service so kind a challenging. Clue is dont forget to add { useValue: environment } into providers.
+Add a couple of simple return value and subscriptions as like below.
+(In order to run only this file : ng test --include="src/libs/shared-data/services/weather.service.spec.ts")
+
+```javascript
+ it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+
+  it('it should be able to set city name', () => {
+    service.setCity('Paris');
+    service.queryParams.subscribe((resp) => {
+      expect(resp.q).toEqual('Paris');
+    });
+  });
+
+  it('it should be able to set api key', () => {
+    service.setApiKey(environment.api.weather_api.key);
+    service.queryParams.subscribe((resp) => {
+      expect(resp.appid).toEqual(environment.api.weather_api.key);
+    });
+  });
+
+  it('it should send a request for city named Paris', () => {
+    const mockWeatherData: IWeather = {name:"Paris"...}
+    service.setApiKey(environment.api.weather_api.key);
+    service.setCity('Paris');
+    service.simpleList().subscribe((resp) => {
+      expect(mockWeatherData).toEqual(resp);
+    });
+
+    const req = httpMock.expectOne(
+      `${environment.api.weather_api.host}/${environment.api.weather_api.version}/${environment.api.weather_api.endpoint}?q=Paris&appid=${environment.api.weather_api.key}`
+    );
+    expect(req.request.method).toBe('GET');
+    req.flush(mockWeatherData);
+  });
+
+  it('it should be able to return forecast result for Istanbul', () => {
+    const mockWeatherData: IWeather = {name:"Istanbul"...}
+
+    service.setApiKey(environment.api.weather_api.key);
+    service.setCity('Istanbul');
+    service.simpleList().subscribe((resp) => {
+      expect(mockWeatherData).toEqual(resp);
+    });
+
+    const req = httpMock.expectOne(
+      `${environment.api.weather_api.host}/${environment.api.weather_api.version}/${environment.api.weather_api.endpoint}?q=Istanbul&appid=${environment.api.weather_api.key}`
+    );
+
+    expect(req.request.method).toBe('GET');
+    req.flush(mockWeatherData);
+  });
+```
