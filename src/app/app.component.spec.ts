@@ -1,19 +1,22 @@
-import { HttpClientModule } from '@angular/common/http';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { DebugElement } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule } from 'ngx-toastr';
 import { SharedUIModule } from 'src/libs';
-import { BaseService } from 'src/libs/shared-data/services/base.service';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+  let tagEl: DebugElement;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
       imports: [
         RouterTestingModule,
         SharedUIModule,
+        BrowserAnimationsModule,
         ToastrModule.forRoot({
           timeOut: 3400,
           progressBar: true,
@@ -39,10 +42,19 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('Weather App');
   });
 
-  // it('should render title', () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   fixture.detectChanges();
-  //   const compiled = fixture.nativeElement;
-  //   expect(compiled.querySelector('.content span').textContent).toContain('weather-app app is running!');
-  // });
+  it('should have load the sidemenu items after initialized', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+
+    tagEl = fixture.debugElement.query(By.css('.acitonSidebarMenu'));
+    expect(tagEl.nativeElement).toBeTruthy();
+  });
+
+  it('should have navbar after initialized', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+
+    tagEl = fixture.debugElement.query(By.css('.acitonNavbarMenu'));
+    expect(tagEl.nativeElement).toBeTruthy();
+  });
 });

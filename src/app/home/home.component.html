@@ -11,12 +11,12 @@
       [navigation]="false"
       [pause]="true"
       animationType="fade"
-      [interval]="4000"
+      [interval]="3000"
       [gesturesSupport]="false"
       [maximumIndicatorsCount]="10"
       animationType="slide"
     >
-      <igx-slide *ngFor="let city of cityData">
+      <igx-slide class="actionCitySlide" *ngFor="let city of cityData">
         <div class="image-container">
           <app-card
             *ngIf="city?.weather | async as cityWeather"
@@ -42,6 +42,7 @@
     "
   >
     <app-daily-card
+      class="actionDailyCard"
       [forecastData]="hourlyForecastData"
       [imageUrl]="selectedCityImageUrl"
       [cityName]="selectedCityName"
@@ -49,7 +50,7 @@
   </div>
 
   <ng-template #skeletonWeather>
-    <div style="margin: 2vh 0 0 2vh">
+    <div class="actionSkeletonTemplate" style="margin: 2vh 0 0 2vh">
       <img
         src="../../assets/images/hourly-weather.svg"
         alt="city weather detail"

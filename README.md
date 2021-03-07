@@ -88,6 +88,7 @@ It's an autoplay slider after a couple of seconds slide changes (if you hover th
 Inside of this carousel you will see city data card and a button bottom of the card which makes you see hourly selected city forecast.
 
 In addition, there is a search tab as well. If you click the hamburger menu button at top left you can open the menu.
+(Also there is a css trick animation between main page and sidebar after clickling menu button. I hope you find amusing)
 Inside of search page you will see a simple input says to you 'type a city name'.
 After you wrote the city name that you wanted, A result card might come up below the input. (of course if it exists..)
 You can easily see the current forecast and be able to add that city to click add city button.
@@ -338,4 +339,33 @@ it('It should create a card with weather data and a button', () => {
     expect(component.cardSubmit.emit).toHaveBeenCalledWith(cityDetail);
   });
 
+```
+
+## Dummy Components with Input Test
+
+This is still a dummy component however, we want to make sure input typing works.
+
+```javascript
+it("should have search template after initialized", () => {
+  tagEl = fixture.debugElement.query(By.css(".actionSearchInput"));
+  expect(tagEl.nativeElement).toBeTruthy();
+});
+
+it("should have type in search input", () => {
+  tagEl = fixture.debugElement.query(By.css(".actionSearchInput"));
+  expect(tagEl.nativeElement).toBeTruthy();
+
+  tagEl.nativeElement.value = "I am typing a city name";
+  tagEl.nativeElement.dispatchEvent(new Event("input"));
+  expect(tagEl.nativeElement.value).toBe("I am typing a city name");
+});
+
+it("should form controller set value changes the input value", () => {
+  tagEl = fixture.debugElement.query(By.css(".actionSearchInput"));
+  expect(tagEl.nativeElement).toBeTruthy();
+
+  component.createForm.controls.name.setValue("Random City Name");
+
+  expect(tagEl.nativeElement.value).toBe("Random City Name");
+});
 ```
