@@ -199,26 +199,4 @@ describe('ForecastService', () => {
     expect(req.request.method).toBe('GET');
     req.flush(mockForecastData);
   });
-
-  // it('it should not be able to return forecast result for empty data', () => {
-  //   const mockForecastData: IForecast = {} as IForecast;
-  //   service.resetData();
-  //   service.setApiKey(environment.api.weather_api.key);
-  //   service.setExclude('minutely');
-  //   service.setData(mockForecastData);
-  //   service.list();
-  //   service.data.subscribe((resp) => {
-  //     expect(mockForecastData).toEqual(resp);
-  //   });
-
-  // tslint:disable-next-line:max-line-length
-  //   const fakeUrl = `${environment.api.forecast_api.host}/${environment.api.forecast_api.version}/${environment.api.forecast_api.endpoint}`;
-  // tslint:disable-next-line:max-line-length
-  //   const correctUrl = `${environment.api.forecast_api.host}/${environment.api.forecast_api.version}/${environment.api.forecast_api.endpoint}?lat=0&lon=0&exclude=minutely&appid=${environment.api.weather_api.key}`;
-  //   const req = httpMock.expectOne(fakeUrl);
-
-  //   expect(req.request.method).not.toBe('POST');
-  //   expect(req.request.url).not.toEqual(correctUrl);
-  //   req.flush(mockForecastData);
-  // });
 });

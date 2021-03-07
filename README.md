@@ -234,3 +234,108 @@ Add a couple of simple return value and subscriptions as like below.
     req.flush(mockWeatherData);
   });
 ```
+
+## Dummy Components Test
+
+This type of components have only one job which is If component receives correct format data it shows them.
+You can see a couple of input and output data check.
+
+component.ts ,
+
+```javascript
+export class CardComponent implements OnInit {
+  @Input() weatherData!: IWeather;
+  @Input() imgUrl!: string;
+  @Input() btnText = 'click';
+  @Output() cardSubmit: EventEmitter<ICityDetail> = new EventEmitter();
+
+ constructor() {}
+
+  ngOnInit(): void {}
+}
+
+```
+
+component.spec.ts ,
+
+```javascript
+
+  it('It should create button text with getting @Input from outside', () => {
+   const mockWeatherData: IWeather = {
+      coord: {
+        lon: 2.3488,
+        lat: 48.8534,
+      },
+      .
+      .
+      .
+      id: 2988507,
+      name: 'Paris'
+    };
+    const text = 'Click for Detail!';
+    component.btnText = text;
+    component.weatherData = mockWeatherData;
+    fixture.detectChanges();
+    submitEl = fixture.debugElement.query(By.css('.cardActionButton'));
+
+    expect(submitEl.nativeElement.textContent.toString().trim()).toEqual(
+      text.trim()
+    );
+  });
+
+it('It should create a card with weather data and a button', () => {
+    const mockWeatherData: IWeather = {
+      coord: {
+        lon: 2.3488,
+        lat: 48.8534,
+      },
+      .
+      .
+      .
+      id: 2988507,
+      name: 'Paris'
+    };
+    const imageUrl = '../../../assets/images/paris.jpg';
+    const text = 'Click for Detail!';
+    component.btnText = text;
+    component.weatherData = mockWeatherData;
+    component.imgUrl = imageUrl;
+    fixture.detectChanges();
+    submitEl = fixture.debugElement.query(By.css('.cardActionButton'));
+
+    expect(submitEl.nativeElement).toBeTruthy();
+  });
+
+  it('It should be able to click the button and listen output', () => {
+    const mockWeatherData: IWeather = {
+      coord: {
+        lon: 2.3488,
+        lat: 48.8534,
+      },
+      .
+      .
+      .
+      id: 2988507,
+      name: 'Paris'
+    };
+    const cityDetail: ICityDetail = {
+      name: 'Paris',
+      coord: {
+        lat: 48.8534,
+        lon: 2.3488,
+      },
+    };
+    const imageUrl = '../../../assets/images/paris.jpg';
+    const text = 'Click for Detail!';
+    component.btnText = text;
+    component.weatherData = mockWeatherData;
+    component.imgUrl = imageUrl;
+    fixture.detectChanges();
+
+    submitEl = fixture.debugElement.query(By.css('.cardActionButton'));
+    spyOn(component.cardSubmit, 'emit');
+    submitEl.nativeElement.click();
+    expect(component.cardSubmit.emit).toHaveBeenCalledWith(cityDetail);
+  });
+
+```

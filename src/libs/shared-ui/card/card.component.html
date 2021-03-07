@@ -1,7 +1,7 @@
 <div *ngIf="weatherData; else skeleton" class="sample-column card-wrapper">
   <igx-card>
     <igx-card-media height="180px" width="250px">
-      <img [src]="imgUrl" />
+      <img class="cardVirtualImage" [src]="imgUrl" />
     </igx-card-media>
     <igx-card-header style="text-align: center">
       <h2 igxCardHeaderTitle>{{ weatherData?.name }}</h2>
@@ -54,6 +54,7 @@
     </igx-card-content>
 
     <button
+      class="cardActionButton"
       *ngIf="weatherData?.coord && weatherData?.name"
       igxButton="raised"
       igxRipple
