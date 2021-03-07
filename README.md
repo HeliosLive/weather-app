@@ -193,7 +193,9 @@ it("It should return false after adding existing city into mock cities array", (
 Create a service this time really does **api calls** with open weather api. But it's not just a simple call service this is an extend service from another service so kind a challenging.
 
 > Clue is dont forget to add { useValue: environment } into providers.
-> Add a couple of simple return value and subscriptions as like below.
+
+_Add a couple of simple return value and subscriptions as like below._
+
 > `ng test --include="src/libs/shared-data/services/weather.service.spec.ts"`
 
 ```javascript
