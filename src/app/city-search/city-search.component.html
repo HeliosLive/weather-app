@@ -24,10 +24,16 @@
   style="margin-top: 3rem"
 >
   <app-card
-    *ngIf="cityData?.weather | async as cityWeather"
+    *ngIf="cityData?.weather | async as cityWeather; else skeletonForecast"
     btnText="Add this City"
     [weatherData]="cityWeather"
     imgUrl="../../../assets/images/earth.jpg"
     (cardSubmit)="addCity($event)"
   ></app-card>
 </div>
+
+<ng-template #skeletonForecast>
+  <div style="margin: 2vh 0 0 10vh">
+    <img src="../../assets/images/empty-search.svg" alt="type a city name" />
+  </div>
+</ng-template>

@@ -149,4 +149,9 @@ export class ResourceService<T extends Resource> extends BaseService {
   resetData(): void {
     this.data$.next(null as any);
   }
+
+  // set test mock data..
+  setData(datum: any): void {
+    this.data$.next(datum as any);
+  }
 }

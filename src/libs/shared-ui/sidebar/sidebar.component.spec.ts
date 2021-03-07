@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SidebarComponent } from './sidebar.component';
+import {
+  IgxIconModule,
+  IgxNavigationDrawerModule,
+  IgxRippleModule,
+} from 'igniteui-angular';
 
 describe('SidebarComponent', () => {
   let component: SidebarComponent;
@@ -8,9 +13,9 @@ describe('SidebarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SidebarComponent ]
-    })
-    .compileComponents();
+      imports: [IgxIconModule, IgxNavigationDrawerModule, IgxRippleModule],
+      declarations: [SidebarComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -19,7 +19,7 @@ export class TemperatureConverterPipe implements PipeTransform {
       }
       if (unit === 'K') {
         const tempareature = Math.round(value + 273.15);
-        return tempareature.toFixed(2);
+        return tempareature;
       }
     }
     return;

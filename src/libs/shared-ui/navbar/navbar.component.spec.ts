@@ -1,4 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  IgxButtonModule,
+  IgxIconModule,
+  IgxNavbarModule,
+  IgxRippleModule,
+} from 'igniteui-angular';
 
 import { NavbarComponent } from './navbar.component';
 
@@ -8,9 +14,14 @@ describe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
-    })
-    .compileComponents();
+      imports: [
+        IgxIconModule,
+        IgxNavbarModule,
+        IgxButtonModule,
+        IgxRippleModule,
+      ],
+      declarations: [NavbarComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

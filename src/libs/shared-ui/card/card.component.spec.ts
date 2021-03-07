@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CardComponent } from './card.component';
+import {
+  IgxIconModule,
+  IgxCardModule,
+  IgxRippleModule,
+} from 'igniteui-angular';
 
 describe('CardComponent', () => {
   let component: CardComponent;
@@ -8,9 +13,9 @@ describe('CardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardComponent ]
-    })
-    .compileComponents();
+      imports: [IgxIconModule, IgxCardModule, IgxRippleModule],
+      declarations: [CardComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
