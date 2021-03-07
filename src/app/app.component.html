@@ -1,7 +1,12 @@
-<app-navbar [title]="title" icon="wb_sunny"></app-navbar>
+<app-navbar
+  class="acitonNavbarMenu"
+  [title]="title"
+  icon="wb_sunny"
+></app-navbar>
 <div class="content" style="display: flex">
   <div *ngIf="menuData$ | async as menuData">
     <app-sidebar
+      class="acitonSidebarMenu"
       [menuItems]="menuData"
       (menuCollapse)="menuCollapse($event)"
     ></app-sidebar>
