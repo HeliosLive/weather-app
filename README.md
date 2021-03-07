@@ -8,8 +8,10 @@ I've used [Open Weather Api](https://openweathermap.org/) to make forecast api c
 
 ## Demo
 
-In order to make this app user friendly and eye appealing a few images have been used. If you find it slow please forgive us :)
-[Demo](https://europe-weather-app.herokuapp.com/) is running on heroku right now. It is a free account thus, after 30min inactiveness it goes to sleep. Please wait for initial run.
+In order to make this app user friendly and eye appealing a few images have been used. If you find it slow please be patient :)
+[Demo](https://europe-weather-app.herokuapp.com/) is running on heroku right now.
+
+> It is a free account. Thus, after 30min inactiveness it goes to sleep. Please wait for initial run.
 
 ## Development server
 
@@ -37,9 +39,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## App features
 
--Display 5 cities current weather and hourly forecast
--Search any city by name and if result come up you can add that city into existing cities.
--Open weather api integration (current & hourly)
+- Displaying current weather for 5 cities and hourly forecast.
+- Search any city by name and if result come up you can add that city into existing cities.
+- Open weather api integration (current & hourly)
 
 ## Prerequisites
 
@@ -61,63 +63,71 @@ Install node packages (npm install)
 
 ## Deploy on heroku
 
-Go to [Heroku](https://id.heroku.com/login) and after signed in create a new personal app but don't forget! App environment has to based on nodejs.
-Install enhanced-resolve#3.3.0(-dev) & express & path into the app and make sure added to your package.json file.
-Then, add "start:prod": "node server.js" script into your package.json file and create a Procfile which includes `web: npm run start:prod`
-text.
-Later, create a server.js file to be able to run your app on server. (you can copy paste from ours but don't forget to change the app name)
-After these steps your app runs via express on heroku nodejs environment.
-When everything is done you can connect your github app repository to your heroku application to able to build after every commit into specific branch. (If your repo isn't on github you can use heroku cli instead of github)
+> Go to [Heroku](https://id.heroku.com/login) and after signed in create a new personal app but don't forget! App environment has to based on nodejs.
+
+- Install enhanced-resolve#3.3.0(-dev) & express & path into the app and make sure added to your package.json file.
+- Then, add "start:prod": "node server.js" script into your package.json file and create a Procfile which includes `web: npm run start:prod` command.
+- Later, create a server.js file to be able to run your app on server. (you can copy paste from ours but don't forget to change the app name)
+- After these steps your app runs via express on heroku nodejs environment.
+  > When everything is done you can connect your github app repository to your heroku application to able to build after every commit into specific branch. (If your repo isn't on github you can use heroku cli instead of github)
 
 ## tools that been used
 
-Twitter bootstrap for responsive structure. (npm i bootstrap then add style url to style.scss file)
-You don't need to implement all css and js files because we are using ignite-ui for component styles. Just add grid css.
+- Twitter bootstrap for responsive structure. (npm i bootstrap then add style url to style.scss file)
 
-Ignite ui for material component UI. (ng add igniteui-angular) [Ignite UI](https://www.infragistics.com/products/ignite-ui-angular)
-team seperated all components by module thus everytime you try to use some component don't forget to add the module
-(e.g. to be able to use igx-icon tag first you need to import IgxIconModule into your feature module)
+  > You don't need to implement all css and js files because we are using ignite-ui for component styles. Just add grid css.
 
-ngx-toastr for action alerts. (npm i ngx-toastr then add style file url into styles array inside of angular.json)
-You can create custom toastr style file into assets folder and make your own customization then don't forget to add that file into style.scss
+- Ignite ui for material component UI. (ng add igniteui-angular) [Ignite UI](https://www.infragistics.com/products/ignite-ui-angular)
+  team seperated all components by module so everytime you try to use some component don't forget to add the module
+
+  > (e.g. to be able to use igx-icon tag first you need to import IgxIconModule into your feature module)
+
+- ngx-toastr for action alerts. (npm i ngx-toastr then add style file url into styles array inside of angular.json)
+  > You can create custom toastr style file into assets folder and make your own customization then don't forget to add that file into style.scss
 
 # End User Guide
 
-After you open the website you will face with home page directly and see a carousel includes 5 cities data.
-It's an autoplay slider after a couple of seconds slide changes (if you hover the card autoplay will pause). However you can click any bullet to change slides.
-Inside of this carousel you will see city data card and a button bottom of the card which makes you see hourly selected city forecast.
+- After you open the website you will face with home page directly and see a carousel includes 5 cities data.
+- It's an **autoplay slider** after a couple of seconds slide changes (if you hover the card **autoplay will pause**). However you can click any bullet to change slides.
+- Inside of this carousel you will see city data card and a button bottom of the card which makes you see hourly selected city forecast.
 
-In addition, there is a search tab as well. If you click the hamburger menu button at top left you can open the menu.
-(Also there is a css trick animation between main page and sidebar after clickling menu button. I hope you find amusing)
-Inside of search page you will see a simple input says to you 'type a city name'.
-After you wrote the city name that you wanted, A result card might come up below the input. (of course if it exists..)
-You can easily see the current forecast and be able to add that city to click add city button.
+- In addition, there is a search tab as well. If you click the hamburger menu button at top left you can open the menu.
+  > (Also there is a css trick animation between main page and sidebar after clickling menu button. I hope you find amusing)
+- Inside of search page you will see a simple input says to you 'type a city name'.
+- After you wrote the city name that you wanted, A result card might come up below the input. (of course if it exists..)
+- You can easily see the current forecast and be able to add that city to click add city button.
 
 # Developers Guide
 
 Basically, I've used lazy loading and feature modules to create a smooth Architecture.
 We have 2 pages home and Search. Each component has their own module and route mechanism.
-I've seperated app and libs at first. My goal was seperate reusable components/directives/pipes/services etc from main smart components.
-Then I draw a few templates for pages so I realized I need to use same component types more than one page.
-That's why I created shared-ui folder and split big components into small pieces.. After that import into other lazy loading feature modules. To make it reusable and generic. Components structure based on service's behaviourSubjects, output and input instead of ngRx pattern because it's a small application we don't need to.
 
-I've added endpoint urls into environment files to access and use safely/easily.
+- I've seperated app and libs at first. My goal was seperate reusable components/directives/pipes/services etc from main smart components.
+- Then I draw a few templates for pages so I realized I need to use same component types more than one page.
+  > That's why I created shared-ui folder and split big components into small pieces..
+- After that import into other lazy loading feature modules. To make it reusable and generic.
+- Components structure based on service's behaviourSubjects, output and input instead of ngRx pattern because it's a small application we don't need to.
 
-I've created base service to initialize all service calls and manage all request from one place. Thus we can intercept it easily and change error messages or data.
-Also considering simple crud operations It'd be better to create one resource service and use singleton pattern.
+- I've added endpoint urls into environment files to inject to service because of safely/easily/convenient usage.
 
-After network calls api returns data differently so I've created 2 pipes to use everywhere and those are timestamp-date-format and Kelvin to Celcius temperature-converter pipes.
+- I've created base service to initialize all service calls and manage all request from one place. Thus we can intercept it easily and change error messages or data.
+
+  > Also considering simple crud operations It'd be better to create one resource service and use singleton pattern.
+
+- After network calls api returns data differently so I've created 2 pipes to use everywhere and those are timestamp-date-format and Kelvin to Celcius temperature-converter pipes.
 
 ## Custom directive unit test
 
-Create a custom directive only job is highlighted the tag when you hover it. You can add color or default yellow.
-(In order to run only this file : ng test --include="src/libs/directives/highlight.directive.spec.ts")
-![Demo](https://res.cloudinary.com/dlth9ls92/image/upload/v1615066708/directive-unit-test.gif)
+Create a custom directive only job is **highlighted the tag** when you hover it. You can add color or default yellow.
+
+> `ng test --include="src/libs/directives/highlight.directive.spec.ts"`
+> ![Demo](https://res.cloudinary.com/dlth9ls92/image/upload/v1615066708/directive-unit-test.gif)
 
 ## Custom pipe unit test
 
-We have two custom pipes for testing and their jobs are: First, converting temperature between Kelvin and Celcius. Second, convert date from timestamp to 'hh:mm'.
-(In order to run only this file : ng test --include="src/libs/pipes/temperature-converter.pipe.spec.ts")
+We have two custom pipes for testing and their jobs are: First, **converting temperature** between Kelvin and Celcius. Second, **convert date** from timestamp to 'hh:mm'.
+
+> `ng test --include="src/libs/pipes/temperature-converter.pipe.spec.ts"`
 
 ```javascript
 describe("TemperatureConverterPipe", () => {
@@ -138,7 +148,7 @@ describe("TemperatureConverterPipe", () => {
 });
 ```
 
-(In order to run only this file : ng test --include="src/libs/pipes/timestamp-date-format.pipe.spec.ts")
+> `ng test --include="src/libs/pipes/timestamp-date-format.pipe.spec.ts"`
 
 ```javascript
 describe("TimestampDateFormatPipe", () => {
@@ -157,7 +167,8 @@ describe("TimestampDateFormatPipe", () => {
 
 Create a service only job is load the cities function and add a new city.
 Add a couple of simple return value and subscriptions as like below.
-(In order to run only this file : ng test --include="src/libs/shared-data/services/city.service.spec.ts")
+
+> `ng test --include="src/libs/shared-data/services/city.service.spec.ts"`
 
 ```javascript
 it("It should return 5 element length long mock cities array data after loaded", () => {
@@ -180,9 +191,11 @@ it("It should return false after adding existing city into mock cities array", (
 });
 ```
 
-Create a service this time really does api calls with open weather api. But it's not just a simple call service this is an extend service from another service so kind a challenging. Clue is dont forget to add { useValue: environment } into providers.
-Add a couple of simple return value and subscriptions as like below.
-(In order to run only this file : ng test --include="src/libs/shared-data/services/weather.service.spec.ts")
+Create a service this time really does **api calls** with open weather api. But it's not just a simple call service this is an extend service from another service so kind a challenging.
+
+> Clue is dont forget to add { useValue: environment } into providers.
+> Add a couple of simple return value and subscriptions as like below.
+> `ng test --include="src/libs/shared-data/services/weather.service.spec.ts"`
 
 ```javascript
  it('should be created', () => {
@@ -238,7 +251,7 @@ Add a couple of simple return value and subscriptions as like below.
 
 ## Dummy Components Test
 
-This type of components have only one job which is If component receives correct format data it shows them.
+This type of components have only **one job** which is If component receives correct format data it shows them.
 You can see a couple of input and output data check.
 
 component.ts ,
@@ -364,6 +377,7 @@ it("should form controller set value changes the input value", () => {
   tagEl = fixture.debugElement.query(By.css(".actionSearchInput"));
   expect(tagEl.nativeElement).toBeTruthy();
 
+  // patch value or set value both works fine!
   component.createForm.controls.name.setValue("Random City Name");
 
   expect(tagEl.nativeElement.value).toBe("Random City Name");

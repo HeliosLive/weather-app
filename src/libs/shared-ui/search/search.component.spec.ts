@@ -51,6 +51,7 @@ describe('SearchComponent', () => {
     tagEl = fixture.debugElement.query(By.css('.actionSearchInput'));
     expect(tagEl.nativeElement).toBeTruthy();
 
+    // patch value or set value both works fine!
     component.createForm.controls.name.setValue('Random City Name');
 
     expect(tagEl.nativeElement.value).toBe('Random City Name');
