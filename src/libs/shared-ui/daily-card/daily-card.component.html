@@ -1,7 +1,7 @@
 <div *ngIf="forecastData; else skeleton" class="sample-column card-wrapper">
   <igx-card>
     <igx-card-media height="260px" width="55vw">
-      <img class="cardVirtualImage" [src]="imgUrl" />
+      <img class="cardVirtualImage" [src]="imageUrl" />
     </igx-card-media>
     <igx-card-header style="text-align: center">
       <h2 igxCardHeaderTitle>{{ cityName }}</h2>
@@ -46,14 +46,6 @@
         </div>
       </div>
     </igx-card-content>
-    <!-- 
-  <button
-        igxButton="raised"
-        igxRipple
-        (click)="detailClicked.emit(forecastData?.coord)"
-      >
-        Read more
-      </button> -->
   </igx-card>
 </div>
 

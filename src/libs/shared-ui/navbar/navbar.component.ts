@@ -8,13 +8,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class NavbarComponent implements OnInit {
   @Input() icon = 'home';
   @Input() title = 'Weather App';
-  @Output() accountClicked: EventEmitter<any> = new EventEmitter();
+  @Output() actionButtonClicked: EventEmitter<string> = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}
-
-  toogleAccount(event?: any) {
-    console.log('clicked to account');
-    // this.accountClicked.emit(event);
-  }
 }

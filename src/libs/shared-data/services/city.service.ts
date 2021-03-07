@@ -55,7 +55,9 @@ export class CityService {
 
   addCity(city: ICity): boolean {
     city.id = this.cities.length + 1;
-    const cityIndex = this.cities.findIndex((el) => el.name === city.name);
+    const cityIndex = this.cities.findIndex(
+      (el) => el.name.toLowerCase() === city.name.toLowerCase()
+    );
     if (cityIndex === -1) {
       this.cities.push(city);
       return true;
