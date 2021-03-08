@@ -15,7 +15,8 @@ export class TemperatureConverterPipe implements PipeTransform {
       //   : value;
       if (unit === 'C') {
         const tempareature = Math.round(value - 273.15);
-        return tempareature.toString(); // *ngIf conditional blows up when returns 0 so make it string to prevent errors..
+        // *ngIf conditional blows up when returns 0 so make it string to prevent errors..
+        return tempareature.toString();
       }
       if (unit === 'K') {
         const tempareature = Math.round(value + 273.15);

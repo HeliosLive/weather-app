@@ -66,33 +66,34 @@ Install node packages (npm install)
 > Go to [Heroku](https://id.heroku.com/login) and after signed in create a new personal app but don't forget! App environment has to based on nodejs.
 
 - Install enhanced-resolve#3.3.0(-dev) & express & path into the app and make sure added to your package.json file.
-- Then, add "start:prod": "node server.js" script into your package.json file and create a Procfile which includes `web: npm run start:prod` command.
-- Later, create a server.js file to be able to run your app on server. (you can copy paste from ours but don't forget to change the app name)
+- Then, add `"start:prod": "node server.js"` script into your package.json file and create a Procfile which includes `web: npm run start:prod` command.
+- Later, create a **server.js file** to be able to run your app on server.
+  > you can copy paste from ours but don't forget to change the app name :)
 - After these steps your app runs via express on heroku nodejs environment.
   > When everything is done you can connect your github app repository to your heroku application to able to build after every commit into specific branch. (If your repo isn't on github you can use heroku cli instead of github)
 
 ## tools that been used
 
-- Twitter bootstrap for responsive structure. (npm i bootstrap then add style url to style.scss file)
+- [Twitter Bootstrap](https://www.npmjs.com/package/bootstrap) for responsive structure. (npm i bootstrap then add style url to style.scss file)
 
   > You don't need to implement all css and js files because we are using ignite-ui for component styles. Just add grid css.
 
-- Ignite ui for material component UI. (ng add igniteui-angular) [Ignite UI](https://www.infragistics.com/products/ignite-ui-angular)
-  team seperated all components by module so everytime you try to use some component don't forget to add the module
+- [Ignite UI](https://www.infragistics.com/products/ignite-ui-angular) for material component UI. (ng add igniteui-angular)
 
+  > Ignite UI team seperated all components by module so everytime you try to use some component don't forget to add the module
   > (e.g. to be able to use igx-icon tag first you need to import IgxIconModule into your feature module)
 
-- ngx-toastr for action alerts. (npm i ngx-toastr then add style file url into styles array inside of angular.json)
+- [ngx-toastr](https://www.npmjs.com/package/ngx-toastr) for action alerts. (npm i ngx-toastr then add style file url into styles array inside of angular.json)
   > You can create custom toastr style file into assets folder and make your own customization then don't forget to add that file into style.scss
 
 # End User Guide
 
-- After you open the website you will face with home page directly and see a carousel includes 5 cities data.
+- After you open the website you will face with home page directly and see a _carousel_ includes 5 cities data.
 - It's an **autoplay slider** after a couple of seconds slide changes (if you hover the card **autoplay will pause**). However you can click any bullet to change slides.
 - Inside of this carousel you will see city data card and a button bottom of the card which makes you see hourly selected city forecast.
 
 - In addition, there is a search tab as well. If you click the hamburger menu button at top left you can open the menu.
-  > (Also there is a css trick animation between main page and sidebar after clickling menu button. I hope you find amusing)
+  > (Also there is a css trick animation between main page and sidebar after clickling menu button. I hope you find **amusing**)
 - Inside of search page you will see a simple input says to you 'type a city name'.
 - After you wrote the city name that you wanted, A result card might come up below the input. (of course if it exists..)
 - You can easily see the current forecast and be able to add that city to click add city button.
@@ -136,13 +137,13 @@ describe("TemperatureConverterPipe", () => {
   it('transforms "Kelvin" to "Celcius"', () => {
     const celciusValue = 22;
     const kelvinValue = Math.round(celciusValue + 273.15);
-    expect(pipe.transform(celciusValue, "K")).toEqual(kelvinValue);
+    expect(pipe.transform(celciusValue, "K")).toEqual(kelvinValue.toString());
   });
 
   it('transforms "Celcius" to "Kelvin"', () => {
     const kelvinValue = 290;
     const celciusValue = Math.round(kelvinValue - 273.15);
-    expect(pipe.transform(kelvinValue, "C")).toEqual(celciusValue);
+    expect(pipe.transform(kelvinValue, "C")).toEqual(celciusValue.toString());
   });
 });
 ```
