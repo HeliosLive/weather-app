@@ -42,12 +42,6 @@ describe('HomeComponent', () => {
     expect(slides.length).toEqual(5);
   });
 
-  // it('should have forecast template after triggering any city detail', () => {
-  //   tagEl = fixture.debugElement.query(By.css('.cardActionButton'));
-  //   tagEl.nativeElement.click();
-  //   expect(component.getCityDetail).toHaveBeenCalled();
-  // });
-
   it('should have skeleton template before triggering any city detail', () => {
     tagEl = fixture.debugElement.query(By.css('.actionSkeletonTemplate'));
     expect(tagEl.nativeElement).toBeTruthy();

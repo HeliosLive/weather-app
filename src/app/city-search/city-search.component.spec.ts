@@ -46,12 +46,6 @@ describe('CitySearchComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should have city weather card template after typing "London" to input and be able to add that city ', () => {
-  //   tagEl = fixture.debugElement.query(By.css('.cardActionButton'));
-  //   tagEl.nativeElement.click();
-  //   expect(component.getCityDetail).toHaveBeenCalled();
-  // });
-
   it('should have search template after initialized', () => {
     tagEl = fixture.debugElement.query(By.css('.actionSearchTemplate'));
     expect(tagEl.nativeElement).toBeTruthy();
